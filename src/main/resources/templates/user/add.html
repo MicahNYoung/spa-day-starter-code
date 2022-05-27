@@ -1,36 +1,49 @@
+
+<!--Within the add.html template, create a form that accepts inputs for each of the User class properties. Include an additional password input field to verify the password input.
+The form should be set up to POST to /user.-->
+
+<!--Be sure to set type="password" for the password and verify inputs, to ensure the passwords are not visible when being typed into the form. You can also set type="email"
+on the email input, which will enable some basic client-side validation. We’ll tackle validation in more detail in the next studio.-->
+
+
 <!DOCTYPE html>
-<html lang="en" xmlns:th = "http://www.thymeleaf.org/">
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head>
-    <meta charset="UTF-8">
-    <link href="../static/css/styles.css" th:href="@{/css/styles.css}" rel="stylesheet" />
-    <title>Sign Up</title>
+    <meta charset="UTF-8"/>
+    <title>Skoobop</title>
 </head>
 <body>
-    <form method = 'post' th:action="@{/user}">
-        <label>
-            Username:
-            <input type = 'text' name = 'username' th:value="${username}">
+
+<p th:text="${error}">Default error</p>
+<form method="post" action="/user">
+    <div>
+        <label> UserName
+            <input type="text" th:field="${user.username}">
+
         </label>
-
-        <label>
-            Email:
-            <input type = 'email' name = 'email' th:value="${email}">
+    </div>
+    <div>
+        <label> Email
+            <input name="email" th:field="${user.email}">
         </label>
-
-        <label>
-            Password:
-            <input type = 'password' name = 'password'>
+    </div>
+    <div>
+        <label> Password1
+            <input type="password" name="password1">
         </label>
-
-        <label>
-            Verify Password:
-            <input type = 'password' name = 'verify'>
+    </div>
+    <div>
+        <label> Password2
+            <input type="password" name="password2">
         </label>
+    </div>
+    <div>
+        <label> UserName
+            <input type="submit" value="submitButtonText">
+        </label>
+    </div>
 
-        <p th:text="${error}"></p>
 
-        <input type = 'submit' value = 'Sign Up'>
-    </form>
-
+</form>
 </body>
 </html>
